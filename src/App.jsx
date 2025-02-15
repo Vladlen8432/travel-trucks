@@ -9,7 +9,7 @@ import Reviews from "./components/Reviews/Reviews";
 
 const App = () => {
   return (
-    <div>
+    <div className="container">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />

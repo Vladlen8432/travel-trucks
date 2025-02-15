@@ -14,20 +14,30 @@ const Layout = () => {
         <nav className={css.nav}>
           <ul className={css.navList}>
             <li className={css.navItem}>
-              <NavLink className={css.navLink} to="/">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? `${css.navLink} ${css.active}` : css.navLink
+                }
+              >
                 Home
               </NavLink>
             </li>
             <li className={css.navItem}>
-              <NavLink className={css.navLink} to="/catalog">
+              <NavLink
+                to="/catalog"
+                className={({ isActive }) =>
+                  isActive ? `${css.navLink} ${css.active}` : css.navLink
+                }
+              >
                 Catalog
               </NavLink>
             </li>
           </ul>
-          <BurgerMenuIcon className={css.burgerMenuIcon} />
         </nav>
+        <BurgerMenuIcon className={css.burgerMenuIcon} />
       </header>
-      <main className={css.main}>
+      <main>
         <Outlet />
       </main>
     </div>
