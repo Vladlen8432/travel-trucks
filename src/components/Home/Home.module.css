@@ -3,19 +3,19 @@
   width: 100%;
   height: 100vh;
   background-size: cover;
-  padding: 240px 20px;
+  padding: 40vh 20px;
 }
 
 .mainTitle {
   color: #f7f7f7;
-  font-size: 32px;
+  font-size: 5vh;
   font-weight: 600;
   line-height: 1;
 }
 
 .mainDescription {
   color: #f7f7f7;
-  font-size: 14px;
+  font-size: 2vh;
   font-weight: 600;
   line-height: 1.33;
   margin-top: 16px;
@@ -38,13 +38,13 @@
   }
 
   .mainTitle {
-    font-size: 4vw;
+    /* font-size: 4vw; */
     font-weight: 600;
     line-height: 0.66;
   }
 
   .mainDescription {
-    font-size: 2vw;
+    /* font-size: 2vw; */
     font-weight: 600;
     line-height: 1.33;
     margin-top: 16px;
@@ -64,5 +64,13 @@
 @media screen and (min-width: 1200px) {
   .containerHome {
     padding: 45vh 64px;
+  }
+
+  .mainTitle {
+    font-size: 4vw;
+  }
+
+  .mainDescription {
+    font-size: 2vw;
   }
 }
