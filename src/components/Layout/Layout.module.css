@@ -40,6 +40,46 @@
   stroke: #101828;
 }
 
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  background-color: #101828;
+}
+
+.modalList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  margin-top: 100px;
+  margin-left: 36px;
+}
+
+.modalLink {
+  color: #f7f7f7;
+}
+
+.modalLink.active {
+  color: #d84343;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
 @media screen and (min-width: 768px) {
   .header {
     padding: 24px 32px;
