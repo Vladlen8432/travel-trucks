@@ -1,0 +1,91 @@
+input[type="checkbox"] {
+  display: none;
+}
+
+.label {
+  color: #6c717b;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 12px;
+  width: 114px;
+  height: 98px;
+  border: 1px solid #dadde1;
+  cursor: pointer;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.005;
+}
+
+input[type="checkbox"]:checked + label .wrapper {
+  border: 1px solid #e44848;
+}
+
+.inputLocationWrapper {
+  position: relative;
+}
+
+.inputLocation {
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 40px;
+  padding: 18px 20px;
+  background-color: #f7f7f7;
+  border: none;
+  border-radius: 12px;
+  line-height: 1.5;
+  padding-left: 48px;
+}
+
+.locationIcon {
+  position: absolute;
+  top: 25%;
+  left: 20px;
+  right: 8px;
+  pointer-events: none;
+}
+
+.filterTitle {
+  margin-top: 32px;
+}
+
+.filterLine {
+  width: 100%;
+  height: 1px;
+  background-color: #dadde1;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.filterCheckContainer {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  background-color: #e44848;
+  padding: 16px 32px;
+  color: #fff;
+  border-radius: 200px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  transition: all 0.3s ease;
+}
+
+.filterButton:hover {
+  background-color: #d84343;
+}

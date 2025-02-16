@@ -1,0 +1,15 @@
+.containerCatalog {
+  padding: 116px 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .containerCatalog {
+    padding: 116px 32px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .containerCatalog {
+    padding: 116px 64px;
+  }
+}

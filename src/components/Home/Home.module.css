@@ -38,13 +38,11 @@
   }
 
   .mainTitle {
-    /* font-size: 4vw; */
     font-weight: 600;
     line-height: 0.66;
   }
 
   .mainDescription {
-    /* font-size: 2vw; */
     font-weight: 600;
     line-height: 1.33;
     margin-top: 16px;
