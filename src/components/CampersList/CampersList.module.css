@@ -1,0 +1,163 @@
+.containerCampers {
+  width: 100%;
+}
+
+.campersList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
+.campersListItem {
+  display: flex;
+  gap: 24px;
+  border-radius: 20px;
+  border: 1px solid #dadde1;
+  padding: 24px;
+}
+
+.camperInfo {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.containerCamperTitle {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.camperTitle {
+  color: #101828;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+}
+
+.containerCamperPrice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.camperPrice {
+  color: #101828;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+}
+
+.favorite {
+  fill: #101828;
+  height: 24px;
+  width: auto;
+}
+
+.containerRatingLocation {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.star {
+  width: 16px;
+  height: 16px;
+}
+
+.reviewsText,
+.locationText {
+  line-height: 1.5;
+}
+
+.locationContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.locationIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.camperDescription {
+  color: #475467;
+  line-height: 1.5;
+  margin-top: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.featuresList {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.featuresListItem {
+  display: flex;
+  gap: 8px;
+  background-color: #f2f4f7;
+  padding: 12px 18px;
+  border-radius: 100px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.campersImg {
+  width: 292px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* .featureIcon {
+  width: 20px;
+  height: 20px;
+} */
+
+.camperDetailsLink {
+  padding: 16px 40px;
+  background-color: #e44848;
+  border-radius: 200px;
+  width: max-content;
+  color: #fff;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-top: 24px;
+  letter-spacing: -0.005em;
+  transition: all 0.3s ease;
+}
+
+.camperDetailsLink:hover {
+  background-color: #d84343;
+}
+
+.loadMoreBtn {
+  margin-top: 40px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  border: 1px solid #dadde1;
+  border-radius: 200px;
+  padding: 16px 32px;
+  transition: all 0.3s ease;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.loadMoreBtn:hover {
+  border: 1px solid #d84343;
+}
