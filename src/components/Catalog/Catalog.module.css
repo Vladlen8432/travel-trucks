@@ -1,18 +1,18 @@
 .containerCatalog {
-  padding: 116px 20px 0 20px;
+  padding: 116px 20px 52px 20px;
 }
 
 @media screen and (min-width: 768px) {
   .containerCatalog {
     display: flex;
     gap: 32px;
-    padding: 116px 32px 0 32px;
+    padding: 116px 32px 52px 32px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .containerCatalog {
-    padding: 116px 64px 0 64px;
+    padding: 116px 64px 52px 64px;
     gap: 64px;
   }
 }

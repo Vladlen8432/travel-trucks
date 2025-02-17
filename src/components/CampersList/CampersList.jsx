@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 import { HeartIcon, LocationIcon } from "../Icons";
 import { fetchCampers } from "../../services/api";
 import star from "../../assets/images/star.png";
 import css from "./CampersList.module.css";
 
-const CampersList = () => {
+const CampersList = ({ filters }) => {
   const [campers, setCampers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [visibleCampers, setVisibleCampers] = useState(4);
@@ -30,6 +31,45 @@ const CampersList = () => {
       });
   }, []);
 
+  const filterCampers = (campers, filters) => {
+    return campers.filter((camper) => {
+      if (
+        filters.location &&
+        !camper.location.toLowerCase().includes(filters.location.toLowerCase())
+      ) {
+        return false;
+      }
+
+      if (filters.equipment) {
+        const { ac, automatic, kitchen, tv, bathroom } = filters.equipment;
+        if (
+          (ac && !camper.AC) ||
+          (automatic && !camper.automatic) ||
+          (kitchen && !camper.kitchen) ||
+          (tv && !camper.TV) ||
+          (bathroom && !camper.bathroom)
+        ) {
+          return false;
+        }
+      }
+
+      if (filters.type) {
+        const { van, fullyIntegrated, alcove } = filters.type;
+        if (
+          (van && !camper.van) ||
+          (fullyIntegrated && !camper.fullyIntegrated) ||
+          (alcove && !camper.alcove)
+        ) {
+          return false;
+        }
+      }
+
+      return true;
+    });
+  };
+
+  const filteredCampers = filterCampers(campers, filters);
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -41,75 +81,73 @@ const CampersList = () => {
   return (
     <div className={css.containerCampers}>
       <ul className={css.campersList}>
-        {campers
-          .slice(0, visibleCampers)
-          .map(
-            ({ id, name, price, rating, location, description, gallery }) => (
-              <li key={id} className={css.campersListItem}>
-                <img
-                  className={css.campersImg}
-                  src={gallery?.[0]?.thumb || ""}
-                  alt={name}
-                />
-
-                <div className={css.camperInfo}>
-                  <div className={css.containerCamperTitle}>
-                    <h3 className={css.camperTitle}>{name}</h3>
-                    <div className={css.containerCamperPrice}>
-                      <h3 className={css.camperPrice}>${price}</h3>
-                      <HeartIcon className={css.favorite} />
-                    </div>
-                  </div>
-
-                  <div className={css.containerRatingLocation}>
-                    <div className={css.ratingContainer}>
-                      <img className={css.star} src={star} alt="star" />
-                      <p className={css.reviewsText}>{rating} Stars</p>
-                    </div>
-
-                    <div className={css.locationContainer}>
-                      <LocationIcon className={css.locationIcon} />
-                      <p className={css.locationText}>{location}</p>
-                    </div>
-                  </div>
-
-                  <p className={css.camperDescription}>{description}</p>
-
-                  <ul className={css.featuresList}>
-                    {[
-                      { label: "Air Conditioning", condition: campers.AC },
-                      { label: "Bathroom", condition: campers.bathroom },
-                      { label: "Kitchen", condition: campers.kitchen },
-                      { label: "TV", condition: campers.TV },
-                      { label: "Radio", condition: campers.radio },
-                      {
-                        label: "Refrigerator",
-                        condition: campers.refrigerator,
-                      },
-                      { label: "Microwave", condition: campers.microwave },
-                      { label: "Gas", condition: campers.gas },
-                      { label: "Water", condition: campers.water },
-                    ]
-                      .filter((item) => item.condition === item.condition)
-                      .map((item, index) => (
-                        <li key={index} className={css.featuresListItem}>
-                          {item.label}
-                        </li>
-                      ))}
-                  </ul>
-
-                  <NavLink
-                    className={css.camperDetailsLink}
-                    to={`/catalog/${id}`}
-                  >
-                    Show more
-                  </NavLink>
+        {filteredCampers.slice(0, visibleCampers).map((camper) => (
+          <li key={camper.id} className={css.campersListItem}>
+            <img
+              className={css.campersImg}
+              src={camper.gallery?.[0]?.thumb || ""}
+              alt={camper.name}
+            />
+            <div className={css.camperInfo}>
+              <div className={css.containerCamperTitle}>
+                <h3 className={css.camperTitle}>{camper.name}</h3>
+                <div className={css.containerCamperPrice}>
+                  <h3 className={css.camperPrice}>
+                    ${camper.price.toFixed(2)}
+                  </h3>
+                  <HeartIcon className={css.favorite} />
                 </div>
-              </li>
-            )
-          )}
+              </div>
+
+              <div className={css.containerRatingLocation}>
+                <div className={css.ratingContainer}>
+                  <img className={css.star} src={star} alt="star" />
+                  <p className={css.reviewsText}>
+                    {camper.rating} (
+                    {Array.isArray(camper.reviews) ? camper.reviews.length : 0}{" "}
+                    reviews)
+                  </p>
+                </div>
+
+                <div className={css.locationContainer}>
+                  <LocationIcon className={css.locationIcon} />
+                  <p className={css.locationText}>{camper.location}</p>
+                </div>
+              </div>
+
+              <p className={css.camperDescription}>{camper.description}</p>
+
+              <ul className={css.featuresList}>
+                {[
+                  { label: "Air Conditioning", condition: camper.AC },
+                  { label: "Bathroom", condition: camper.bathroom },
+                  { label: "Kitchen", condition: camper.kitchen },
+                  { label: "TV", condition: camper.TV },
+                  { label: "Radio", condition: camper.radio },
+                  { label: "Refrigerator", condition: camper.refrigerator },
+                  { label: "Microwave", condition: camper.microwave },
+                  { label: "Gas", condition: camper.gas },
+                  { label: "Water", condition: camper.water },
+                ]
+                  .filter((item) => item.condition === true)
+                  .map((item, index) => (
+                    <li key={index} className={css.featuresListItem}>
+                      {item.label}
+                    </li>
+                  ))}
+              </ul>
+
+              <NavLink
+                className={css.camperDetailsLink}
+                to={`/catalog/${camper.id}`}
+              >
+                Show more
+              </NavLink>
+            </div>
+          </li>
+        ))}
       </ul>
-      {visibleCampers < campers.length && (
+      {visibleCampers < filteredCampers.length && (
         <button
           className={css.loadMoreBtn}
           type="button"
@@ -122,4 +160,131 @@ const CampersList = () => {
   );
 };
 
+CampersList.propTypes = {
+  setFilters: PropTypes.func.isRequired,
+  filters: PropTypes.func.isRequired,
+};
+
 export default CampersList;
+
+// import { NavLink } from "react-router-dom";
+// import { useEffect, useState } from "react";
+
+// import { HeartIcon, LocationIcon } from "../Icons";
+// import { fetchCampers } from "../../services/api";
+// import star from "../../assets/images/star.png";
+// import css from "./CampersList.module.css";
+
+// const CampersList = () => {
+//   const [campers, setCampers] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [visibleCampers, setVisibleCampers] = useState(4);
+
+//   useEffect(() => {
+//     fetchCampers()
+//       .then((data) => {
+//         if (Array.isArray(data)) {
+//           setCampers(data);
+//         } else if (Array.isArray(data?.items)) {
+//           setCampers(data.items);
+//         } else {
+//           console.error("Unexpected API response format:", data);
+//           setCampers([]);
+//         }
+//         setLoading(false);
+//       })
+//       .catch((error) => {
+//         console.error("Error fetching campers:", error);
+//         setLoading(false);
+//       });
+//   }, []);
+
+//   if (loading) {
+//     return <p>Loading...</p>;
+//   }
+
+//   const handleLoadMore = () => {
+//     setVisibleCampers((prevVisibleCampers) => prevVisibleCampers + 4);
+//   };
+
+//   return (
+//     <div className={css.containerCampers}>
+//       <ul className={css.campersList}>
+//         {campers.slice(0, visibleCampers).map((camper) => (
+//           <li key={camper.id} className={css.campersListItem}>
+//             <img
+//               className={css.campersImg}
+//               src={camper.gallery?.[0]?.thumb || ""}
+//               alt={camper.name}
+//             />
+//             <div className={css.camperInfo}>
+//               <div className={css.containerCamperTitle}>
+//                 <h3 className={css.camperTitle}>{camper.name}</h3>
+//                 <div className={css.containerCamperPrice}>
+//                   <h3 className={css.camperPrice}>${camper.price}</h3>
+//                   <HeartIcon className={css.favorite} />
+//                 </div>
+//               </div>
+
+//               <div className={css.containerRatingLocation}>
+//                 <div className={css.ratingContainer}>
+//                   <img className={css.star} src={star} alt="star" />
+//                   <p className={css.reviewsText}>
+//                     {camper.rating} (
+//                     {Array.isArray(camper.reviews) ? camper.reviews.length : 0}{" "}
+//                     reviews)
+//                   </p>
+//                 </div>
+
+//                 <div className={css.locationContainer}>
+//                   <LocationIcon className={css.locationIcon} />
+//                   <p className={css.locationText}>{camper.location}</p>
+//                 </div>
+//               </div>
+
+//               <p className={css.camperDescription}>{camper.description}</p>
+
+//               <ul className={css.featuresList}>
+//                 {[
+//                   { label: "Air Conditioning", condition: camper.AC },
+//                   { label: "Bathroom", condition: camper.bathroom },
+//                   { label: "Kitchen", condition: camper.kitchen },
+//                   { label: "TV", condition: camper.TV },
+//                   { label: "Radio", condition: camper.radio },
+//                   { label: "Refrigerator", condition: camper.refrigerator },
+//                   { label: "Microwave", condition: camper.microwave },
+//                   { label: "Gas", condition: camper.gas },
+//                   { label: "Water", condition: camper.water },
+//                 ]
+//                   .filter((item) => item.condition === true)
+//                   .map((item, index) => (
+//                     <li key={index} className={css.featuresListItem}>
+//                       {item.label}
+//                     </li>
+//                   ))}
+//               </ul>
+
+//               <NavLink
+//                 className={css.camperDetailsLink}
+//                 to={`/catalog/${camper.id}`}
+//               >
+//                 Show more
+//               </NavLink>
+//             </div>
+//           </li>
+//         ))}
+//       </ul>
+//       {visibleCampers < campers.length && (
+//         <button
+//           className={css.loadMoreBtn}
+//           type="button"
+//           onClick={handleLoadMore}
+//         >
+//           Load more
+//         </button>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default CampersList;
