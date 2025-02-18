@@ -1,0 +1,140 @@
+.containerCamperDetails {
+  padding: 116px 20px 52px 20px;
+}
+
+.camperDetailsTitle {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+}
+
+.containerReviewsLocation {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.containerReviews {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.starImg {
+  width: 16px;
+  height: 16px;
+}
+
+.camperDetailsRating {
+  line-height: 1.5;
+}
+
+.containerLocation {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.locationIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.location {
+  line-height: 1.5;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+  margin-top: 16px;
+}
+
+.galleryList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  margin-top: 28px;
+}
+
+.galleryImg {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.camperDescription {
+  color: #475467;
+  line-height: 1.5;
+  margin-top: 28px;
+}
+
+.detailsNavList {
+  display: flex;
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.detailsNavItem {
+  position: relative;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.detailsNavLink {
+  position: relative;
+}
+
+.detailsNavLink.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -27px;
+  width: 100%;
+  height: 5px;
+  background-color: #e44848;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.underline {
+  width: 100%;
+  height: 1px;
+  background-color: #dadde1;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .containerCamperDetails {
+    gap: 32px;
+    padding: 116px 32px 52px 32px;
+  }
+
+  .galleryList {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 40px;
+  }
+
+  .galleryImg {
+    width: 292px;
+    height: 312px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .containerCamperDetails {
+    padding: 116px 64px 52px 64px;
+    gap: 64px;
+  }
+
+  .galleryImg {
+    width: 292px;
+    height: 312px;
+  }
+}
