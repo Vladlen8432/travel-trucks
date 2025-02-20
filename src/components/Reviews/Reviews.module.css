@@ -1,0 +1,46 @@
+.containerReviews {
+  width: 50%;
+}
+
+.reviewsList {
+    display: flex;
+    flex-direction: column;
+    row-gap: 44px;
+}
+
+.containerUser {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.firstLetter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #f2f4f7;
+  color: #e44848;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+  border-radius: 50%;
+}
+
+.userRatingList {
+  display: flex;
+  margin-top: 4px;
+}
+
+.userReview {
+    margin-top: 16px;
+}
+
+.starIcon {
+  fill: #f2f4f7;
+}
+
+.starIconYellow {
+  fill: #ffc531;
+}
