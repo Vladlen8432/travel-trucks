@@ -36,6 +36,7 @@ const Filter = ({ setFilters }) => {
             type="text"
             id="location"
             {...register("location")}
+            placeholder="City"
           />
         </div>
         <label className={css.label}>Filters</label>

@@ -57,6 +57,10 @@
   width: auto;
 }
 
+.favoriteActive {
+  fill: #e44848;
+}
+
 .containerRatingLocation {
   display: flex;
   align-items: center;

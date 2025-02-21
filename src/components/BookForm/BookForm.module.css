@@ -2,7 +2,7 @@
   padding: 44px;
   border: 1px solid #dadde1;
   border-radius: 10px;
-  width: 50%;
+  width: 100%;
 }
 
 .formTitle {
@@ -62,4 +62,10 @@
 
 .submitButton:hover {
   background-color: #d84343;
+}
+
+@media screen and (min-width: 768px) {
+  .containerForm {
+    width: 50%;
+  }
 }
