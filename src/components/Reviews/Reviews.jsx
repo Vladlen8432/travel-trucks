@@ -5,6 +5,7 @@ import { StarIcon } from "../Icons";
 import css from "./Reviews.module.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import BookForm from "../BookForm/BookForm";
 
 const Reviews = () => {
   const { id } = useParams();
@@ -62,6 +63,7 @@ const Reviews = () => {
           )}
         </ul>
       </div>
+      <BookForm/>
     </div>
   );
 };

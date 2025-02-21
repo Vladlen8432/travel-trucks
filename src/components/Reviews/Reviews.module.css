@@ -1,11 +1,16 @@
+.container {
+  display: flex;
+  gap: 40px;
+}
+
 .containerReviews {
-  width: 50%;
+  width: 100%;
 }
 
 .reviewsList {
-    display: flex;
-    flex-direction: column;
-    row-gap: 44px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 44px;
 }
 
 .containerUser {
@@ -28,13 +33,18 @@
   border-radius: 50%;
 }
 
+.userName {
+  font-weight: 500;
+  line-height: 1.5;
+}
+
 .userRatingList {
   display: flex;
   margin-top: 4px;
 }
 
 .userReview {
-    margin-top: 16px;
+  margin-top: 16px;
 }
 
 .starIcon {
@@ -43,4 +53,10 @@
 
 .starIconYellow {
   fill: #ffc531;
+}
+
+@media screen and (min-width: 768px) {
+  .containerReviews {
+    width: 50%;
+  }
 }

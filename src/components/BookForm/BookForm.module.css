@@ -1,0 +1,65 @@
+.containerForm {
+  padding: 44px;
+  border: 1px solid #dadde1;
+  border-radius: 10px;
+  width: 50%;
+}
+
+.formTitle {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.formText {
+  color: #6c717b;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.form {
+  margin-top: 24px;
+}
+
+.input {
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 18px;
+  border: none;
+  background-color: #f7f7f7;
+  border-radius: 12px;
+}
+
+.textarea {
+  min-width: 100%;
+  max-width: 100%;
+  max-height: 118px;
+  min-height: 118px;
+  overflow-y: scroll;
+  padding: 18px;
+  border: none;
+  background-color: #f7f7f7;
+  border-radius: 12px;
+}
+
+.textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.submitButton {
+  color: #fff;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  background-color: #e44848;
+  padding: 16px 60px;
+  border-radius: 200px;
+  margin-top: 24px;
+  margin-right: auto;
+  margin-left: auto;
+  transition: all 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #d84343;
+}

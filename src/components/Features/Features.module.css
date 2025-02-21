@@ -1,12 +1,13 @@
-/* .featuresReviewsForm {
+.container {
   display: flex;
-} */
+  gap: 40px;
+}
 
 .containerFeatures {
   padding: 20px;
   background-color: #f7f7f7;
   border-radius: 10px;
-  width: 50%;
+  width: 100%;
 }
 
 .featuresList {
@@ -58,6 +59,7 @@
 
 @media screen and (min-width: 768px) {
   .containerFeatures {
+    width: 50%;
     padding: 32px;
   }
 }
