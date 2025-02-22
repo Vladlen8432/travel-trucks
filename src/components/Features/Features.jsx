@@ -76,35 +76,9 @@ const Features = () => {
           </ul>
         )}
       </div>
-      <BookForm/>
+      <BookForm />
     </div>
   );
 };
 
 export default Features;
-
-// import { useParams } from "react-router-dom";
-// import css from "./Features.module.css";
-
-// const Features = () => {
-
-//   return (
-//     <div className={css.containerFeatures}>
-//       <ul className={css.featuresList}>
-//         <li className={css.featuresListItem}>Automatic</li>
-//       </ul>
-
-//       <h3 className={css.featuresTitle}>Vehicle details</h3>
-//       <div className={css.line}></div>
-
-//       <ul className={css.vehicleDetailsList}>
-//         <li className={css.vehicleDetailsItem}>
-//           <p className={css.detailsItem}>Details name</p>
-//           <p className={css.detailsItem}>Details value</p>
-//         </li>
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default Features;
