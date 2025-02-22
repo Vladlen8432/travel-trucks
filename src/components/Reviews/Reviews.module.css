@@ -1,6 +1,7 @@
 .container {
   display: flex;
-  gap: 40px;
+  flex-direction: column;
+  row-gap: 40px;
 }
 
 .containerReviews {
@@ -56,7 +57,19 @@
 }
 
 @media screen and (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    column-gap: 20px;
+  }
+
   .containerReviews {
     width: 50%;
   }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    column-gap: 40px;
+  }
+
 }
