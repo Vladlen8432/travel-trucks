@@ -17,6 +17,11 @@
   gap: 8px;
 }
 
+.featureIcon {
+  width: 20px;
+  height: 20px;
+}
+
 .featuresListItem {
   display: flex;
   gap: 8px;
