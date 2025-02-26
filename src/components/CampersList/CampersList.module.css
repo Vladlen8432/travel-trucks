@@ -15,7 +15,6 @@
   border-radius: 20px;
   border: 1px solid #dadde1;
   padding: 24px;
-
   flex-direction: column;
 }
 
@@ -114,7 +113,7 @@
 
 .featuresListItem {
   display: flex;
-  align-items: center;
+  align-items:center;
   gap: 8px;
   background-color: #f2f4f7;
   padding: 12px 18px;
@@ -130,10 +129,15 @@
   border-radius: 10px;
 }
 
-/* .featureIcon {
+.featureIconWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.featureIcon {
   width: 20px;
   height: 20px;
-} */
+}
 
 .camperDetailsLink {
   padding: 16px 40px;

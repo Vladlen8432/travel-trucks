@@ -2,10 +2,34 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-import { HeartIcon, LocationIcon } from "../Icons";
+import {
+  HeartIcon,
+  LocationIcon,
+  ACIcon,
+  BathroomIcon,
+  KitchenIcon,
+  TVIcon,
+  RadioIcon,
+  RefregiratorIcon,
+  MicrowaveIcon,
+  GasIcon,
+  WaterIcon,
+} from "../Icons";
 import { fetchCampers } from "../../services/api";
 import star from "../../assets/images/star.png";
 import css from "./CampersList.module.css";
+
+const featureIcons = {
+  "Air Conditioning": <ACIcon className={css.featureIcon} />,
+  Bathroom: <BathroomIcon className={css.featureIcon} />,
+  Kitchen: <KitchenIcon className={css.featureIcon} />,
+  TV: <TVIcon className={css.featureIcon} />,
+  Radio: <RadioIcon className={css.featureIcon} />,
+  Refrigerator: <RefregiratorIcon className={css.featureIcon} />,
+  Microwave: <MicrowaveIcon className={css.featureIcon} />,
+  Gas: <GasIcon className={css.featureIcon} />,
+  Water: <WaterIcon className={css.featureIcon} />,
+};
 
 const CampersList = ({ filters }) => {
   const [campers, setCampers] = useState([]);
@@ -126,7 +150,7 @@ const CampersList = ({ filters }) => {
                   <p className={css.reviewsText}>
                     {camper.rating} (
                     {Array.isArray(camper.reviews) ? camper.reviews.length : 0}{" "}
-                    review)s
+                    reviews)
                   </p>
                 </div>
 
@@ -153,6 +177,7 @@ const CampersList = ({ filters }) => {
                   .filter((item) => item.condition === true)
                   .map((item, index) => (
                     <li key={index} className={css.featuresListItem}>
+                      {featureIcons[item.label]}
                       {item.label}
                     </li>
                   ))}
